@@ -1,0 +1,22 @@
+<title>Autorisation TikTok — Andarta Stats</title><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{font-family:system-ui,sans-serif;max-width:720px;margin:0 auto;padding:24px 16px;line-height:1.6;color:#222}h1{font-size:1.6rem}h2{font-size:1.15rem;margin-top:1.8em}nav a{margin-right:1em}footer{margin-top:3em;font-size:.85rem;color:#666}code{background:#f2f2f2;padding:2px 6px;border-radius:4px;word-break:break-all}</style>
+<nav><a href="index.html">Andarta Stats</a><a href="terms.html">Conditions d’utilisation</a><a href="privacy.html">Confidentialité</a></nav>
+<h1>Autorisation TikTok</h1>
+<div id="out"><p>Lecture de la réponse TikTok…</p></div>
+<script>
+(function(){
+  var p=new URLSearchParams(location.search), out=document.getElementById('out');
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  if(p.get('error')){
+    out.innerHTML='<p><strong>Autorisation refusée ou erreur :</strong> <code>'+esc(p.get('error'))+'</code></p><p>'+esc(p.get('error_description')||'')+'</p>';
+    return;
+  }
+  var code=p.get('code');
+  if(!code){out.innerHTML='<p>Aucun code reçu. Cette page sert uniquement de retour après une autorisation TikTok.</p>';return;}
+  out.innerHTML='<p>Autorisation accordée. Copiez ce code et collez-le dans l’outil (il expire en quelques minutes) :</p>'
+    +'<p><code id="c">'+esc(code)+'</code></p><p><button id="b">Copier le code</button></p>'
+    +'<p>État : <code>'+esc(p.get('state')||'')+'</code></p>';
+  document.getElementById('b').onclick=function(){navigator.clipboard.writeText(code).then(function(){document.getElementById('b').textContent='Copié ✔';});};
+})();
+</script>
+<p><small>Le code n’est ni enregistré ni transmis par cette page : il reste dans votre navigateur.</small></p>
+<footer>Andarta Pictures SAS — Espace Gambetta, 3 rue Antoine Barnave, 26500 Bourg-lès-Valence, France — SIRET 830 129 730 000 24 — <a href="mailto:contact@andarta-pictures.com">contact@andarta-pictures.com</a></footer>
